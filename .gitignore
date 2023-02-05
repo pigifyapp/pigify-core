@@ -1,3 +1,6 @@
 /scripts
 /.deps
 /artifacts
+/contracts/artifacts
+/contracts/interfaces/artifacts
+/tests/artifacts
