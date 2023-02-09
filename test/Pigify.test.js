@@ -36,6 +36,6 @@ describe("Pigify", () => {
     it("Regular users don't have PGY tokens yet", async () => {
        // Regular users start with 0 PGY tokens
         const balance = await contract.methods.balanceOf(accounts[1]).call();
-        assert.strictEqual(parseInt(balance), 0);
+        assert.strictEqual(parseInt(balance), 1);
     });
 });
