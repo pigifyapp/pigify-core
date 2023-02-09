@@ -1,6 +1,6 @@
 # Pigify
 
-Pigify is an ERC20 token designed to help people save money. 
+Pigify is a dapp designed to help people save money. 
 
 ### How it works
 
