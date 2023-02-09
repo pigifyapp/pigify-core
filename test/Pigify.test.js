@@ -1,5 +1,5 @@
 const assert = require("assert");
-const ganache = require("ganache-cli");
+const ganache = require("ganache");
 const { abi, bytecode } = require("../compile");
 
 
