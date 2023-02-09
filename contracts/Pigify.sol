@@ -14,8 +14,8 @@ contract Pigify is PigifyTokenPool, PigifyNativeToken {
     // Publicly accesible method to deposit PGY
     // requires a previous allowance so the smart
     // contract can take the tokens
-    function depositPGY(uint256 _amount) public {
-        _depositToken(Token.PGY, _amount);
+    function depositPGY(uint256 amount) public {
+        _depositToken(Token.PGY, amount);
     }
 
     // Publicly accessible method to withdraw PGY
@@ -29,8 +29,8 @@ contract Pigify is PigifyTokenPool, PigifyNativeToken {
     // Publicly accesible method to deposit USDT
     // requires a previous allowance so the smart
     // contract can take the tokens
-    function depositUSDT(uint256 _amount) public {
-        _depositToken(Token.USDT, _amount);
+    function depositUSDT(uint256 amount) public {
+        _depositToken(Token.USDT, amount);
     }
 
     // Publicly accessible method to withdraw USDT

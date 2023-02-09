@@ -19,8 +19,8 @@ contract PigifyTokenRegistrar {
 
     // Registers a token in the token registry, this is necessary
     // to let a token be saved in Pigify's smart contract
-    function _registerToken(Token _token, address _tokenAddress) internal {
-        tokenRegistry[_token].token = IERC20Minimal(_tokenAddress);
+    function _registerToken(Token token, address tokenAddress) internal {
+        tokenRegistry[token].token = IERC20Minimal(tokenAddress);
     }
 
 }

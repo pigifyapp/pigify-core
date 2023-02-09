@@ -13,10 +13,10 @@ contract PigifyTokenPool is PigifyTokenRegistrar {
     mapping(Token => mapping(address => Savings)) public savings;
 
     // Checks that the sender's balance on a specific token
-    // is greather than the goal
-    modifier goal(Token _token) {
+    // is greater than the goal
+    modifier checkGoalCompletion(Token token) {
         require(
-            savings[_token][msg.sender].balance >= savings[_token][msg.sender].goal,
+            savings[token][msg.sender].balance >= savings[token][msg.sender].goal,
             "You haven't met your goal yet."
         );
         _;
@@ -24,38 +24,38 @@ contract PigifyTokenPool is PigifyTokenRegistrar {
 
     // Checks that the smart contract is allowed to take tokens
     // from the desired address.
-    modifier checkAllowance(Token _token, uint amount) {
-        require(tokenRegistry[_token].token.allowance(msg.sender, address(this)) >= amount, "Not enough allowance");
+    modifier checkAllowance(Token token, uint256 amount) {
+        require(tokenRegistry[token].token.allowance(msg.sender, address(this)) >= amount, "Not enough allowance");
         _;
     }
 
     // Establishes a goal on a specific token, once a goal is set
     // the sender won't be able to withdraw their tokens until
     // the amount of deposited tokens is greather than the goal
-    function _establishGoal(Token _token, uint256 _goal) internal goal(_token) {
-        savings[_token][msg.sender].goal = _goal;
+    function _establishGoal(Token token, uint256 goal) internal checkGoalCompletion(token) {
+        savings[token][msg.sender].goal = goal;
     }
 
     // Tries to deposit an amount of tokens from the user to
     // the smart contract balance.
-    function _depositToken(Token _token, uint256 _amount) internal checkAllowance(_token, _amount) {
+    function _depositToken(Token token, uint256 amount) internal checkAllowance(token, amount) {
         require(
-            tokenRegistry[_token].token.transferFrom(msg.sender, address(this), _amount),
+            tokenRegistry[token].token.transferFrom(msg.sender, address(this), amount),
             "Failed to deposit token"
         );
 
-        savings[_token][msg.sender].balance += _amount;
+        savings[token][msg.sender].balance += amount;
     }
 
     // Tries to withdraw all the tokens saved by an user from
     // the smart contract to their personal wallet. 
     // If the user hasn't completed his goal they won't be able
     // to withdraw the tokens.
-    function _withdrawToken(Token _token) internal goal(_token) {
-        uint256 _totalSavings = savings[_token][msg.sender].balance;
-        savings[_token][msg.sender].balance = 0;
-        savings[_token][msg.sender].goal = 0;
-        tokenRegistry[_token].token.transferFrom(address(this), msg.sender, _totalSavings);
+    function _withdrawToken(Token token) internal checkGoalCompletion(token) {
+        uint256 totalSavings = savings[token][msg.sender].balance;
+        savings[token][msg.sender].balance = 0;
+        savings[token][msg.sender].goal = 0;
+        tokenRegistry[token].token.transferFrom(address(this), msg.sender, totalSavings);
     }
 
 }
