@@ -9,3 +9,12 @@ It works by allowing individuals to lock their coins into a smart contract until
 ### Disclaimer
 
 Please be advised that Pigify is still in its development stages and may not be suitable for use in a production environment. Utilizing Pigify carries potential risks and it is important to use it with caution. Proceed at your own risk.
+
+### Testnet address
+
+This contract is running on the Görli testnet under this address:
+
+> 0x476353473f7b173ff47ca75aa2585bfb26c7d4af
+
+This address is NOT the final address for Pigify.
+
