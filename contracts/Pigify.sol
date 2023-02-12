@@ -54,13 +54,13 @@ contract Pigify is PigifyTokenPool, PigifyNativeToken {
     }
 
     // Publicly accessible method to read the balance
-    // of a specific address in PGY
+    // of a specific address in USDT
     function balanceUSDT(address target) public view returns(uint256) {
         return _readBalance(Token.USDT, target);
     }
 
     // Publicly accessible method to read the goal
-    // of a specific address in PGY
+    // of a specific address in USDT
     function goalUSDT(address target) public view returns(uint256) {
         return _readGoal(Token.USDT, target);
     }
