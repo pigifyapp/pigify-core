@@ -17,7 +17,7 @@ beforeEach(async () => {
     // Use an account to deploy contract
     contract = await new web3.eth.Contract(abi)
         .deploy({ data: bytecode })
-        .send({ from: accounts[0], gas: "2000000" });
+        .send({ from: accounts[0], gas: "20000000" });
 });
 
 describe("Pigify", () => {
