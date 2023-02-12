@@ -26,6 +26,18 @@ contract Pigify is PigifyTokenPool, PigifyNativeToken {
         _withdrawToken(Token.PGY);
     }
 
+    // Publicly accessible method to read the balance
+    // of a specific address in PGY
+    function balancePGY(address target) public view returns(uint256) {
+        return _readBalance(Token.PGY, target);
+    }
+
+    // Publicly accessible method to read the goal
+    // of a specific address in PGY
+    function goalPGY(address target) public view returns(uint256) {
+        return _readGoal(Token.PGY, target);
+    }
+
     // Publicly accesible method to deposit USDT
     // requires a previous allowance so the smart
     // contract can take the tokens
@@ -39,6 +51,18 @@ contract Pigify is PigifyTokenPool, PigifyNativeToken {
     // this method will withdraw ALL their tokens
     function withdrawUSDT() public {
         _withdrawToken(Token.USDT);
+    }
+
+    // Publicly accessible method to read the balance
+    // of a specific address in PGY
+    function balanceUSDT(address target) public view returns(uint256) {
+        return _readBalance(Token.USDT, target);
+    }
+
+    // Publicly accessible method to read the goal
+    // of a specific address in PGY
+    function goalUSDT(address target) public view returns(uint256) {
+        return _readGoal(Token.USDT, target);
     }
 
 }

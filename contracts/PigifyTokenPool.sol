@@ -36,6 +36,16 @@ contract PigifyTokenPool is PigifyTokenRegistrar {
         savings[token][msg.sender].goal = goal;
     }
 
+    // Returns the goal of an address in a specific token
+    function _readGoal(Token token, address target) internal view returns(uint256) {
+        return savings[token][target].goal;
+    }
+
+    // Returns the balance of an address in a specific token
+    function _readBalance(Token token, address target) internal view returns(uint256) {
+        return savings[token][target].balance;
+    }
+
     // Tries to deposit an amount of tokens from the user to
     // the smart contract balance.
     function _depositToken(Token token, uint256 amount) internal checkAllowance(token, amount) {
