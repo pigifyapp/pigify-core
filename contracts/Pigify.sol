@@ -8,7 +8,8 @@ contract Pigify is PigifyTokenPool, PigifyNativeToken {
 
     constructor() {
         _registerToken(Token.PGY, address(this));
-        _registerToken(Token.USDT, 0xdAC17F958D2ee523a2206206994597C13D831ec7);
+        _registerToken(Token.USDT, 0xeC357C27a26E94955eb415633404495044Ba7fcd);
+        _registerToken(Token.USDC, 0x466595626333c55fa7d7Ad6265D46bA5fDbBDd99);
     }
 
     // Publicly accesible method to deposit PGY
@@ -38,6 +39,12 @@ contract Pigify is PigifyTokenPool, PigifyNativeToken {
         return _readGoal(Token.PGY, target);
     }
 
+    // Publicly accessible method to establish goal
+    // of a specific address in PGY
+    function establishGoalPGY(uint256 goal) public {
+        _establishGoal(Token.PGY, goal);
+    }
+
     // Publicly accesible method to deposit USDT
     // requires a previous allowance so the smart
     // contract can take the tokens
@@ -63,6 +70,45 @@ contract Pigify is PigifyTokenPool, PigifyNativeToken {
     // of a specific address in USDT
     function goalUSDT(address target) public view returns(uint256) {
         return _readGoal(Token.USDT, target);
+    }
+
+    // Publicly accessible method to establish goal
+    // of a specific address in USDT
+    function establishGoalUSDT(uint256 goal) public {
+        _establishGoal(Token.USDT, goal);
+    }
+
+    // Publicly accesible method to deposit USDC
+    // requires a previous allowance so the smart
+    // contract can take the tokens
+    function depositUSDC(uint256 amount) public {
+        _depositToken(Token.USDC, amount);
+    }
+
+    // Publicly accessible method to withdraw USDT
+    // the sender must have completed their goal
+    // to withdraw their tokens. If successful
+    // this method will withdraw ALL their tokens
+    function withdrawUSDC() public {
+        _withdrawToken(Token.USDC);
+    }
+
+    // Publicly accessible method to read the balance
+    // of a specific address in USDC
+    function balanceUSDC(address target) public view returns(uint256) {
+        return _readBalance(Token.USDC, target);
+    }
+
+    // Publicly accessible method to read the goal
+    // of a specific address in USDC
+    function goalUSDC(address target) public view returns(uint256) {
+        return _readGoal(Token.USDC, target);
+    }
+
+    // Publicly accessible method to establish goal
+    // of a specific address in USDC
+    function establishGoalUSDC(uint256 goal) public {
+        _establishGoal(Token.USDC, goal);
     }
 
 }
