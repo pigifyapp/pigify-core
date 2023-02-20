@@ -31,24 +31,24 @@ contract PigifyTokenPool is PigifyTokenRegistrar {
 
     // Establishes a goal on a specific token, once a goal is set
     // the sender won't be able to withdraw their tokens until
-    // the amount of deposited tokens is greather than the goal
-    function _establishGoal(Token token, uint256 goal) internal checkGoalCompletion(token) {
+    // the amount of deposited tokens is greater than the goal
+    function establishGoal(Token token, uint256 goal) public checkGoalCompletion(token) {
         savings[token][msg.sender].goal = goal;
     }
 
     // Returns the goal of an address in a specific token
-    function _readGoal(Token token, address target) internal view returns(uint256) {
+    function readGoal(Token token, address target) public view returns(uint256) {
         return savings[token][target].goal;
     }
 
     // Returns the balance of an address in a specific token
-    function _readBalance(Token token, address target) internal view returns(uint256) {
+    function readBalance(Token token, address target) public view returns(uint256) {
         return savings[token][target].balance;
     }
 
     // Tries to deposit an amount of tokens from the user to
     // the smart contract balance.
-    function _depositToken(Token token, uint256 amount) internal checkAllowance(token, amount) {
+    function depositToken(Token token, uint256 amount) public {
         require(
             tokenRegistry[token].token.transferFrom(msg.sender, address(this), amount),
             "Failed to deposit token"
@@ -61,7 +61,7 @@ contract PigifyTokenPool is PigifyTokenRegistrar {
     // the smart contract to their personal wallet. 
     // If the user hasn't completed his goal they won't be able
     // to withdraw the tokens.
-    function _withdrawToken(Token token) internal checkGoalCompletion(token) {
+    function withdrawToken(Token token) public checkGoalCompletion(token) {
         uint256 totalSavings = savings[token][msg.sender].balance;
         savings[token][msg.sender].balance = 0;
         savings[token][msg.sender].goal = 0;
