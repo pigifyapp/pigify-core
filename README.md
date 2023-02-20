@@ -14,7 +14,7 @@ Please be advised that Pigify is still in its development stages and may not be 
 
 This contract is running on the Görli testnet under this address:
 
-> 0x52a431B6CF188Ef00E99F3e049B30c06D0324165
+> 0x295008b77EE2Ada5C1Eb39E08352F2900a844742
 
 This address is NOT the final address for Pigify.
 
