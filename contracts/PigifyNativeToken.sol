@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract PigifyNativeToken is ERC20 {
 
     constructor() ERC20("Pigify", "PGY") {
-        _mint(msg.sender, 2000000000 * 10 ** decimals());
+        _mint(msg.sender, 100_000_000 * 10 ** decimals());
     }
 
 }
