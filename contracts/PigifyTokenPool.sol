@@ -65,7 +65,7 @@ contract PigifyTokenPool is PigifyTokenRegistrar {
         uint256 totalSavings = savings[token][msg.sender].balance;
         savings[token][msg.sender].balance = 0;
         savings[token][msg.sender].goal = 0;
-        tokenRegistry[token].token.transferFrom(address(this), msg.sender, totalSavings);
+        tokenRegistry[token].token.transfer(msg.sender, totalSavings);
     }
 
 }
