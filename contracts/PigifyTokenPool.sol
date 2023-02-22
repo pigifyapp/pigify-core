@@ -12,6 +12,8 @@ contract PigifyTokenPool is PigifyTokenRegistrar {
 
     mapping(Token => mapping(address => Savings)) public savings;
 
+    mapping(Token => uint256) public feesCollected;
+
     // Checks that the sender's balance on a specific token
     // is greater than the goal
     modifier checkGoalCompletion(Token token) {
@@ -50,11 +52,17 @@ contract PigifyTokenPool is PigifyTokenRegistrar {
     // the smart contract balance.
     function depositToken(Token token, uint256 amount) public {
         require(
+            amount > tokenRegistry[token].depositFee,
+            "The deposit amount must be greater than the deposit fee"
+        );
+
+        require(
             tokenRegistry[token].token.transferFrom(msg.sender, address(this), amount),
             "Failed to deposit token"
         );
 
-        savings[token][msg.sender].balance += amount;
+        savings[token][msg.sender].balance += (amount - tokenRegistry[token].depositFee);
+        feesCollected[token] += tokenRegistry[token].depositFee;
     }
 
     // Tries to withdraw all the tokens saved by an user from
