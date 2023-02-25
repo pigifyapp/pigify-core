@@ -10,11 +10,9 @@ It works by allowing individuals to lock their coins into a smart contract until
 
 Please be advised that Pigify is still in its development stages and may not be suitable for use in a production environment. Utilizing Pigify carries potential risks and it is important to use it with caution. Proceed at your own risk.
 
-### Testnet address
+### Mainnet address
 
-This contract is running on the Görli testnet under this address:
+This contract is running on the BNB Smart Chain mainnet under this address:
 
-> 0x295008b77EE2Ada5C1Eb39E08352F2900a844742
-
-This address is NOT the final address for Pigify.
+> 0xA9BbD56541eAB22A1E256ed47324A9051E965c0b
 
