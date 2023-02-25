@@ -9,7 +9,10 @@ contract PigifyTokenRegistrar {
     enum Token {
         PGY,
         USDT,
-        USDC
+        USDC,
+        BUSD,
+        USDD,
+        DAI
     }
 
     struct TokenRegistrarEntry {
