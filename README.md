@@ -10,5 +10,5 @@ It works by allowing individuals to lock their coins into a smart contract until
 
 This contract is running on the BNB Smart Chain mainnet under this address:
 
-> 0xA9BbD56541eAB22A1E256ed47324A9051E965c0b
+> 0xA7aea9E0605C1Ce37aC049D60363A8209F9F040C
 
